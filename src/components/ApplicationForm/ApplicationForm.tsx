@@ -1,3 +1,4 @@
+import { Button } from '../../library/Button';
 import { Input } from '../../library/Input';
 
 export const ApplicationForm = () => {
@@ -7,6 +8,7 @@ export const ApplicationForm = () => {
       <Input label="Position" />
       <Input label="Date Applied" type="date" />
       <Input label="Job Posting Link" />
+      <Button content="Add" type="primary" />
     </div>
   );
 };
