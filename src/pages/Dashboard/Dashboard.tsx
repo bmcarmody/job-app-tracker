@@ -1,3 +1,4 @@
+import { ApplicationForm } from '../../components/ApplicationForm';
 import { Column } from '../../components/Column';
 
 export const Dashboard = () => {
@@ -10,6 +11,7 @@ export const Dashboard = () => {
         <Column name="Rejected" />
         <Column name="No Response (after 30 days)" />
       </div>
+      <ApplicationForm />
     </div>
   );
 };
