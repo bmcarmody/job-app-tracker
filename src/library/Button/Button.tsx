@@ -15,9 +15,9 @@ const buttonTypeStyles: Record<Props['type'], TypeStyles> = {
     textColor: 'text-slate-200',
   },
   secondary: {
-    backgroundColor: 'bg-purple-600',
-    backgroundColorHover: 'hover:bg-purple-700',
-    textColor: 'text-slate-200',
+    backgroundColor: 'bg-slate-400',
+    backgroundColorHover: 'hover:bg-slate-300',
+    textColor: 'text-slate-700',
   },
 };
 

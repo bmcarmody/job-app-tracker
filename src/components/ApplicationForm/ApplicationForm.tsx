@@ -8,7 +8,10 @@ export const ApplicationForm = () => {
       <Input label="Position" />
       <Input label="Date Applied" type="date" />
       <Input label="Job Posting Link" />
-      <Button content="Add" type="primary" />
+      <div className="flex gap-4">
+        <Button content="Cancel" type="secondary" additionalStyles="basis-full" />
+        <Button content="Add" type="primary" additionalStyles="basis-full" />
+      </div>
     </div>
   );
 };
