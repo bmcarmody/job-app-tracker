@@ -1,5 +1,11 @@
+import Dashboard from './pages/Dashboard/Dashboard';
+
 const App = () => {
-  return <div className="text-3xl font-bold underline">Testing git hooks</div>;
+  return (
+    <div className="w-full h-screen bg-slate-400">
+      <Dashboard />
+    </div>
+  );
 };
 
 export default App;
