@@ -4,7 +4,7 @@ type Props = {
   name: string;
 };
 
-const Column = ({ name }: Props): ReactElement => {
+export const Column = ({ name }: Props): ReactElement => {
   return (
     <div>
       <h1>{name}</h1>
@@ -12,5 +12,3 @@ const Column = ({ name }: Props): ReactElement => {
     </div>
   );
 };
-
-export default Column;
