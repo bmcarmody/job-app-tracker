@@ -10,14 +10,14 @@ type Props = {
 
 const buttonTypeStyles: Record<Props['type'], TypeStyles> = {
   primary: {
-    backgroundColor: 'bg-purple-600',
-    backgroundColorHover: 'hover:bg-purple-700',
+    backgroundColor: 'bg-purple-500',
+    backgroundColorHover: 'hover:bg-purple-600',
     textColor: 'text-slate-200',
   },
   secondary: {
-    backgroundColor: 'bg-slate-400',
-    backgroundColorHover: 'hover:bg-slate-300',
-    textColor: 'text-slate-700',
+    backgroundColor: 'bg-slate-300',
+    backgroundColorHover: 'hover:bg-slate-200',
+    textColor: 'text-black',
   },
 };
 
