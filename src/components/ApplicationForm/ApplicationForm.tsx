@@ -1,4 +1,4 @@
-import { addDoc, collection } from 'firebase/firestore';
+import { addDoc, collection, getDocs } from 'firebase/firestore';
 import { useState } from 'react';
 import { db } from '../../firebase';
 import { addJobApplication, COLLECTION_NAME } from '../../jobs';
@@ -19,7 +19,7 @@ export const ApplicationForm = () => {
   const collectionRef = collection(db, COLLECTION_NAME);
 
   const onAddButtonClick = () => {
-    addDoc(collectionRef, {
+    addJobApplication(collectionRef, {
       companyName,
       position,
       dateApplied,
@@ -35,7 +35,7 @@ export const ApplicationForm = () => {
       <Input label="Job Posting Link" type="url" onChange={onJobPostingLinkChange} value={jobPostingLink} />
       <div className="flex gap-4">
         <Button content="Cancel" type="secondary" additionalStyles="basis-full" />
-        <Button content="Add" type="primary" additionalStyles="basis-full" onClick={() => onAddButtonClick()} />
+        <Button content="Add" type="primary" additionalStyles="basis-full" onClick={onAddButtonClick} />
       </div>
     </div>
   );
