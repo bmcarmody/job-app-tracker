@@ -6,6 +6,7 @@ type Props = {
   content: ReactElement | string;
   type: 'primary' | 'secondary';
   additionalStyles: string;
+  onClick?: () => void;
 };
 
 const buttonTypeStyles: Record<Props['type'], TypeStyles> = {
@@ -21,14 +22,18 @@ const buttonTypeStyles: Record<Props['type'], TypeStyles> = {
   },
 };
 
-export const Button = ({ content, type, additionalStyles }: Props): ReactElement<HTMLButtonElement> => {
+export const Button = ({ content, type, additionalStyles, onClick }: Props): ReactElement<HTMLButtonElement> => {
   const typeStyles = useMemo(() => {
     const styles = Object.values(buttonTypeStyles[type]);
 
     return styles.join(' ');
   }, [type]);
 
-  return <button className={`p-4 rounded ${typeStyles} ${additionalStyles}`}>{content}</button>;
+  return (
+    <button className={`p-4 rounded ${typeStyles} ${additionalStyles}`} onClick={onClick}>
+      {content}
+    </button>
+  );
 };
 
 Button.defaultProps = {
