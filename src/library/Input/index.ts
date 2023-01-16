@@ -1,2 +1,1 @@
-export { Input, MemoizedInput } from './Input';
-export { useSetValueCallback } from './hooks';
+export { Input } from './Input';

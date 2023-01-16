@@ -5,7 +5,9 @@ import { Button } from '../../library/Button';
 export const Dashboard = () => {
   return (
     <div className="p-8">
-      <Button content="Add Application" type="primary" additionalStyles="block ml-auto mb-4" />
+      <Button appearance="primary" additionalStyles="block ml-auto mb-4">
+        Add Application
+      </Button>
       <div className="columns-4">
         <Column name="Applied" />
         <Column name="In Process" />

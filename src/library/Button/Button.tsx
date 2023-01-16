@@ -1,15 +1,14 @@
-import { ReactElement, useMemo } from 'react';
+import { ButtonHTMLAttributes, ReactElement, useMemo } from 'react';
 
 type TypeStyles = Record<'backgroundColor' | 'backgroundColorHover' | 'textColor', string>;
 
 type Props = {
-  content: ReactElement | string;
-  type: 'primary' | 'secondary';
-  additionalStyles: string;
-  onClick?: () => void;
-};
+  children: ReactElement | string;
+  appearance: 'primary' | 'secondary';
+  additionalStyles?: string;
+} & ButtonHTMLAttributes<HTMLButtonElement>;
 
-const buttonTypeStyles: Record<Props['type'], TypeStyles> = {
+const buttonTypeStyles: Record<Props['appearance'], TypeStyles> = {
   primary: {
     backgroundColor: 'bg-purple-500',
     backgroundColorHover: 'hover:bg-purple-600',
@@ -22,22 +21,25 @@ const buttonTypeStyles: Record<Props['type'], TypeStyles> = {
   },
 };
 
-export const Button = ({ content, type, additionalStyles, onClick }: Props): ReactElement<HTMLButtonElement> => {
+export const Button = ({
+  children,
+  appearance,
+  additionalStyles,
+  ...props
+}: Props): ReactElement<HTMLButtonElement> => {
   const typeStyles = useMemo(() => {
-    const styles = Object.values(buttonTypeStyles[type]);
+    const styles = Object.values(buttonTypeStyles[appearance]);
 
     return styles.join(' ');
-  }, [type]);
+  }, [appearance]);
 
   return (
-    <button className={`p-4 rounded ${typeStyles} ${additionalStyles}`} onClick={onClick}>
-      {content}
+    <button className={`p-4 rounded ${typeStyles} ${additionalStyles}`} {...props}>
+      {children}
     </button>
   );
 };
 
 Button.defaultProps = {
-  color: 'bg-purple-600',
-  textColor: 'text-slate-200',
   additionalStyles: '',
 };

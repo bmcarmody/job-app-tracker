@@ -1,42 +1,31 @@
-import { addDoc, collection, getDocs } from 'firebase/firestore';
-import { useState } from 'react';
+import { collection } from 'firebase/firestore';
+import { useForm } from 'react-hook-form';
 import { db } from '../../firebase';
 import { addJobApplication, COLLECTION_NAME } from '../../jobs';
 import { Button } from '../../library/Button';
-import { MemoizedInput as Input, useSetValueCallback } from '../../library/Input';
+import { Input } from '../../library/Input';
 
 export const ApplicationForm = () => {
-  const [companyName, setCompanyName] = useState('');
-  const [position, setPosition] = useState('');
-  const [dateApplied, setDateApplied] = useState('');
-  const [jobPostingLink, setJobPostingLink] = useState('');
-
-  const onCompanyNameChange = useSetValueCallback(setCompanyName);
-  const onPositionChange = useSetValueCallback(setPosition);
-  const onDateAppliedChanged = useSetValueCallback(setDateApplied);
-  const onJobPostingLinkChange = useSetValueCallback(setJobPostingLink);
+  const { register, handleSubmit } = useForm();
 
   const collectionRef = collection(db, COLLECTION_NAME);
 
-  const onAddButtonClick = () => {
-    addJobApplication(collectionRef, {
-      companyName,
-      position,
-      dateApplied,
-      jobPostingLink,
-    });
-  };
+  const onSubmit = (data: Record<string, string>) => console.log(data);
 
   return (
-    <div className="bg-slate-600 p-4 rounded w-full flex flex-col text-slate-200">
-      <Input label="Company Name" onChange={onCompanyNameChange} value={companyName} />
-      <Input label="Position" onChange={onPositionChange} value={position} />
-      <Input label="Date Applied" type="date" onChange={onDateAppliedChanged} value={dateApplied} />
-      <Input label="Job Posting Link" type="url" onChange={onJobPostingLinkChange} value={jobPostingLink} />
+    <form className="bg-slate-600 p-4 rounded w-full flex flex-col text-slate-200" onSubmit={handleSubmit(onSubmit)}>
+      <Input label="Company Name" type="text" defaultValue="" {...register('companyName')} />
+      <Input label="Position" type="text" defaultValue="" {...register('position')} />
+      <Input label="Date Applied" type="date" defaultValue="" {...register('dateApplied')} />
+      <Input label="Job Posting Link" type="text" defaultValue="" {...register('jobPostingLink')} />
       <div className="flex gap-4">
-        <Button content="Cancel" type="secondary" additionalStyles="basis-full" />
-        <Button content="Add" type="primary" additionalStyles="basis-full" onClick={onAddButtonClick} />
+        <Button appearance="secondary" additionalStyles="basis-full">
+          Cancel
+        </Button>
+        <Button appearance="primary" type="submit" additionalStyles="basis-full">
+          Add
+        </Button>
       </div>
-    </div>
+    </form>
   );
 };
