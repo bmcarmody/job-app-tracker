@@ -1,16 +1,25 @@
+import { zodResolver } from '@hookform/resolvers/zod';
 import { collection } from 'firebase/firestore';
 import { useForm } from 'react-hook-form';
 import { db } from '../../firebase';
-import { addJobApplication, COLLECTION_NAME } from '../../jobs';
+import { COLLECTION_NAME, JobApplicationSchema } from '../../jobs';
 import { Button } from '../../library/Button';
 import { Input } from '../../library/Input';
 
 export const ApplicationForm = () => {
-  const { register, handleSubmit } = useForm();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    resolver: zodResolver(JobApplicationSchema),
+  });
 
   const collectionRef = collection(db, COLLECTION_NAME);
 
   const onSubmit = (data: Record<string, string>) => console.log(data);
+
+  console.log(errors);
 
   return (
     <form className="bg-slate-600 p-4 rounded w-full flex flex-col text-slate-200" onSubmit={handleSubmit(onSubmit)}>
