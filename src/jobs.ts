@@ -7,7 +7,8 @@ export const JobApplicationSchema = z.object({
   title: z.string().min(3),
   companyName: z.string().min(1),
   dateApplied: z.coerce.date(),
-  jobPostingLink: z.string().url(),
+  location: z.string().min(2),
+  jobPost: z.string().url().optional(),
 });
 
 type JobApplication = z.infer<typeof JobApplicationSchema>;

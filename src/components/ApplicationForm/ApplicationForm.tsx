@@ -21,7 +21,7 @@ export const ApplicationForm = () => {
 
   return (
     <form
-      className="grid grid-cols-2 gap-x-8 gap-y-4 bg-slate-100 p-4 rounded w-full text-slate-900"
+      className="grid grid-cols-2 gap-x-8 gap-y-4 bg-slate-100 p-4 rounded-md w-full text-slate-900"
       onSubmit={handleSubmit(onSubmit)}
     >
       <Input
@@ -30,7 +30,8 @@ export const ApplicationForm = () => {
         defaultValue=""
         {...register('title')}
         containerStyles="col-span-2"
-        inputStyles={`w-full`}
+        inputStyles="w-full"
+        placeholder="Software Engineer"
       />
       <Input
         label="Company Name"
@@ -38,7 +39,8 @@ export const ApplicationForm = () => {
         defaultValue=""
         {...register('companyName')}
         containerStyles="col-span-1"
-        inputStyles={`w-full`}
+        inputStyles="w-full"
+        placeholder="Awesome Company Inc."
       />
       <Input
         label="Date Applied"
@@ -49,20 +51,28 @@ export const ApplicationForm = () => {
         inputStyles="w-40"
       />
       <Input
-        label="Job Posting Link"
+        label="Location"
+        type="text"
+        defaultValue=""
+        {...register('location')}
+        containerStyles="col-span-1"
+        inputStyles="w-full"
+        placeholder="Remote"
+      />
+      <Input
+        label="Job Post"
         type="text"
         defaultValue=""
         precontent="https://"
-        {...register('jobPostingLink')}
+        {...register('jobPost')}
         containerStyles="col-span-1"
         inputStyles="w-10/12"
+        required={false}
+        placeholder="www.awesomecompany.com"
       />
-      <div></div>
-      <Button appearance="secondary" additionalStyles="">
-        Cancel
-      </Button>
+      <Button appearance="secondary">Cancel</Button>
       <Button appearance="primary" type="submit" additionalStyles="basis-full">
-        Add
+        Add Job Application
       </Button>
     </form>
   );
