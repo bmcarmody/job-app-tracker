@@ -1,37 +1,54 @@
-import { ReactElement, InputHTMLAttributes, forwardRef, ForwardedRef } from 'react';
+import { ReactElement, InputHTMLAttributes, forwardRef, ForwardedRef, useMemo } from 'react';
 
 type Props = {
   label?: string;
+  required?: boolean;
+  precontent?: string;
   containerStyles?: string;
   inputStyles?: string;
-  required?: boolean;
 } & InputHTMLAttributes<HTMLInputElement>;
 
 export const Input = forwardRef(
   (
-    { label, containerStyles, inputStyles, required, ...props }: Props,
+    { label, required, precontent, containerStyles, inputStyles, ...props }: Props,
     ref: ForwardedRef<HTMLInputElement>,
-  ): ReactElement<HTMLLabelElement> => (
-    <label className={containerStyles}>
-      {label && (
+  ): ReactElement<HTMLLabelElement> => {
+    const commonStyles = 'px-4 py-2 outline outline-2 outline-slate-300 outline-offset-0';
+
+    const getLabel = useMemo(
+      () => (
         <div className="mb-2">
           {label}
           {required && '*'}
         </div>
-      )}
-      <input
-        className={`text-black px-4 py-2 rounded-md outline outline-2 outline-slate-300 focus:outline-purple-400 outline-offset-0 ${inputStyles}`}
-        {...props}
-        ref={ref}
-      />
-    </label>
-  ),
+      ),
+      [label, required],
+    );
+
+    return (
+      <label className={containerStyles}>
+        {label && getLabel}
+        {precontent && (
+          <span className={`inline-block rounded-l-md w-2/12 text-center ${commonStyles}`}>{precontent}</span>
+        )}
+        <input
+          className={`text-black ${
+            precontent ? 'rounded-r-md' : 'rounded-md'
+          } focus:outline-purple-400 ${commonStyles} ${inputStyles}`}
+          {...props}
+          ref={ref}
+        />
+      </label>
+    );
+  },
 );
 
 Input.displayName = 'Input';
 
 Input.defaultProps = {
+  label: '',
+  required: true,
+  precontent: '',
   containerStyles: '',
   inputStyles: '',
-  required: true,
 };

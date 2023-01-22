@@ -19,11 +19,9 @@ export const ApplicationForm = () => {
 
   const onSubmit = (data: Record<string, string>) => console.log(data);
 
-  const additionalInputStyles = 'mb-4';
-
   return (
     <form
-      className="grid grid-cols-2 gap-x-8 bg-slate-100 p-4 rounded w-full text-slate-900"
+      className="grid grid-cols-2 gap-x-8 gap-y-4 bg-slate-100 p-4 rounded w-full text-slate-900"
       onSubmit={handleSubmit(onSubmit)}
     >
       <Input
@@ -32,7 +30,7 @@ export const ApplicationForm = () => {
         defaultValue=""
         {...register('title')}
         containerStyles="col-span-2"
-        inputStyles={`${additionalInputStyles} w-full`}
+        inputStyles={`w-full`}
       />
       <Input
         label="Company Name"
@@ -40,22 +38,24 @@ export const ApplicationForm = () => {
         defaultValue=""
         {...register('companyName')}
         containerStyles="col-span-1"
-        inputStyles={`${additionalInputStyles} w-full`}
+        inputStyles={`w-full`}
       />
       <Input
         label="Date Applied"
         type="date"
         defaultValue=""
         {...register('dateApplied')}
-        containerStyles=""
-        inputStyles={`${additionalInputStyles} w-40`}
+        containerStyles="col-span-1"
+        inputStyles="w-40"
       />
       <Input
         label="Job Posting Link"
         type="text"
         defaultValue=""
+        precontent="https://"
         {...register('jobPostingLink')}
-        inputStyles={additionalInputStyles}
+        containerStyles="col-span-1"
+        inputStyles="w-10/12"
       />
       <div></div>
       <Button appearance="secondary" additionalStyles="">
