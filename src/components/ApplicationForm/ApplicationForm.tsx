@@ -22,43 +22,48 @@ export const ApplicationForm = () => {
   const additionalInputStyles = 'mb-4';
 
   return (
-    <form className="bg-slate-100 p-4 rounded w-full flex flex-col text-slate-900" onSubmit={handleSubmit(onSubmit)}>
+    <form
+      className="grid grid-cols-2 gap-x-8 bg-slate-100 p-4 rounded w-full text-slate-900"
+      onSubmit={handleSubmit(onSubmit)}
+    >
+      <Input
+        label="Title"
+        type="text"
+        defaultValue=""
+        {...register('title')}
+        containerStyles="col-span-2"
+        inputStyles={`${additionalInputStyles} w-full`}
+      />
       <Input
         label="Company Name"
         type="text"
         defaultValue=""
         {...register('companyName')}
-        additionalStyles={`${additionalInputStyles} w-full`}
-      />
-      <Input
-        label="Position"
-        type="text"
-        defaultValue=""
-        {...register('position')}
-        additionalStyles={additionalInputStyles}
+        containerStyles="col-span-1"
+        inputStyles={`${additionalInputStyles} w-full`}
       />
       <Input
         label="Date Applied"
         type="date"
         defaultValue=""
         {...register('dateApplied')}
-        additionalStyles={additionalInputStyles}
+        containerStyles=""
+        inputStyles={`${additionalInputStyles} w-40`}
       />
       <Input
         label="Job Posting Link"
         type="text"
         defaultValue=""
         {...register('jobPostingLink')}
-        additionalStyles={additionalInputStyles}
+        inputStyles={additionalInputStyles}
       />
-      <div className="flex gap-4">
-        <Button appearance="secondary" additionalStyles="basis-full">
-          Cancel
-        </Button>
-        <Button appearance="primary" type="submit" additionalStyles="basis-full">
-          Add
-        </Button>
-      </div>
+      <div></div>
+      <Button appearance="secondary" additionalStyles="">
+        Cancel
+      </Button>
+      <Button appearance="primary" type="submit" additionalStyles="basis-full">
+        Add
+      </Button>
     </form>
   );
 };

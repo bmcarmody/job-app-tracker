@@ -34,7 +34,7 @@ export const Button = ({
   }, [appearance]);
 
   return (
-    <button className={`p-4 rounded ${typeStyles} ${additionalStyles}`} {...props}>
+    <button className={`p-4 rounded-md ${typeStyles} ${additionalStyles}`} {...props}>
       {children}
     </button>
   );

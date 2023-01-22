@@ -4,8 +4,8 @@ import { addDoc, CollectionReference } from 'firebase/firestore';
 export const COLLECTION_NAME = 'jobs';
 
 export const JobApplicationSchema = z.object({
+  title: z.string().min(3),
   companyName: z.string().min(1),
-  position: z.string().min(3),
   dateApplied: z.coerce.date(),
   jobPostingLink: z.string().url(),
 });
