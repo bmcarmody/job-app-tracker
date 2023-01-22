@@ -19,14 +19,38 @@ export const ApplicationForm = () => {
 
   const onSubmit = (data: Record<string, string>) => console.log(data);
 
-  console.log(errors);
+  const additionalInputStyles = 'mb-4';
 
   return (
-    <form className="bg-slate-600 p-4 rounded w-full flex flex-col text-slate-200" onSubmit={handleSubmit(onSubmit)}>
-      <Input label="Company Name" type="text" defaultValue="" {...register('companyName')} />
-      <Input label="Position" type="text" defaultValue="" {...register('position')} />
-      <Input label="Date Applied" type="date" defaultValue="" {...register('dateApplied')} />
-      <Input label="Job Posting Link" type="text" defaultValue="" {...register('jobPostingLink')} />
+    <form className="bg-slate-100 p-4 rounded w-full flex flex-col text-slate-900" onSubmit={handleSubmit(onSubmit)}>
+      <Input
+        label="Company Name"
+        type="text"
+        defaultValue=""
+        {...register('companyName')}
+        additionalStyles={`${additionalInputStyles} w-full`}
+      />
+      <Input
+        label="Position"
+        type="text"
+        defaultValue=""
+        {...register('position')}
+        additionalStyles={additionalInputStyles}
+      />
+      <Input
+        label="Date Applied"
+        type="date"
+        defaultValue=""
+        {...register('dateApplied')}
+        additionalStyles={additionalInputStyles}
+      />
+      <Input
+        label="Job Posting Link"
+        type="text"
+        defaultValue=""
+        {...register('jobPostingLink')}
+        additionalStyles={additionalInputStyles}
+      />
       <div className="flex gap-4">
         <Button appearance="secondary" additionalStyles="basis-full">
           Cancel
