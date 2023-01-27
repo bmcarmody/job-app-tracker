@@ -1,3 +1,4 @@
+import { inputStyles as sharedInputStyles } from '../shared';
 import { ReactElement, InputHTMLAttributes, forwardRef, ForwardedRef, useMemo } from 'react';
 
 type Props = {
@@ -13,8 +14,6 @@ export const Input = forwardRef(
     { label, required, precontent, containerStyles, inputStyles, ...props }: Props,
     ref: ForwardedRef<HTMLInputElement>,
   ): ReactElement<HTMLLabelElement> => {
-    const commonStyles = 'px-4 py-2 outline outline-2 outline-slate-300 outline-offset-0';
-
     const getLabel = useMemo(
       () => (
         <div className="mb-2">
@@ -29,12 +28,12 @@ export const Input = forwardRef(
       <label className={containerStyles}>
         {label && getLabel}
         {precontent && (
-          <span className={`inline-block rounded-l-md w-2/12 text-center ${commonStyles}`}>{precontent}</span>
+          <span className={`inline-block rounded-l-md w-2/12 text-center ${sharedInputStyles}`}>{precontent}</span>
         )}
         <input
           className={`text-black ${
             precontent ? 'rounded-r-md' : 'rounded-md'
-          } focus:outline-purple-400 ${commonStyles} ${inputStyles}`}
+          } focus:outline-purple-400 ${sharedInputStyles} ${inputStyles}`}
           {...props}
           ref={ref}
         />
