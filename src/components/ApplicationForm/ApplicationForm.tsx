@@ -17,6 +17,9 @@ export const ApplicationForm = () => {
     { label: 'Seasonal', value: 'seasonal' },
   ];
 
+  const minDate = new Date(new Date().setFullYear(new Date().getFullYear() - 5)).toLocaleDateString('en-ca');
+  const maxDate = new Date().toLocaleDateString('en-ca');
+
   const {
     register,
     handleSubmit,
@@ -58,7 +61,9 @@ export const ApplicationForm = () => {
         defaultValue=""
         {...register('dateApplied')}
         containerStyles="col-span-1"
-        inputStyles="w-40"
+        inputStyles="w-40 pr-2"
+        min={minDate}
+        max={maxDate}
       />
       <Input
         label="Location"
