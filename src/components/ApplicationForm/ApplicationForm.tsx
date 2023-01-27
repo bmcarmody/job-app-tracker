@@ -5,8 +5,18 @@ import { db } from '../../firebase';
 import { COLLECTION_NAME, JobApplicationSchema } from '../../jobs';
 import { Button } from '../../library/Button';
 import { Input } from '../../library/Input';
+import { Select } from '../../library/Select';
+import { SelectOption } from '../../library/Select/Select';
 
 export const ApplicationForm = () => {
+  const employmentOptions: SelectOption[] = [
+    { label: 'Full-Time', value: 'fullTime' },
+    { label: 'Part-Time', value: 'partTime' },
+    { label: 'Contract', value: 'contract' },
+    { label: 'Temporary', value: 'temporary' },
+    { label: 'Seasonal', value: 'seasonal' },
+  ];
+
   const {
     register,
     handleSubmit,
@@ -59,6 +69,7 @@ export const ApplicationForm = () => {
         inputStyles="w-full"
         placeholder="Remote"
       />
+      <Select label="Employment" options={employmentOptions} />
       <Input
         label="Job Post"
         type="text"
@@ -70,6 +81,7 @@ export const ApplicationForm = () => {
         required={false}
         placeholder="www.awesomecompany.com"
       />
+      <div></div>
       <Button appearance="secondary">Cancel</Button>
       <Button appearance="primary" type="submit" additionalStyles="basis-full">
         Add Job Application
