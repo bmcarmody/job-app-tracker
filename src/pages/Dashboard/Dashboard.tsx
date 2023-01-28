@@ -1,11 +1,14 @@
+import { useState } from 'react';
 import { ApplicationForm } from '../../components/ApplicationForm';
 import { Column } from '../../components/Column';
 import { Button } from '../../library/Button';
 
 export const Dashboard = () => {
+  const [showApplicationForm, setShowApplicationForm] = useState(false);
+
   return (
-    <div className="p-8">
-      <Button appearance="primary" additionalStyles="block ml-auto mb-4">
+    <div className="h-full">
+      <Button appearance="primary" additionalStyles="block ml-auto mb-4" onClick={() => setShowApplicationForm(true)}>
         Add Application
       </Button>
       <div className="columns-4">
@@ -14,7 +17,7 @@ export const Dashboard = () => {
         <Column name="Rejected" />
         <Column name="No Response (after 30 days)" />
       </div>
-      <ApplicationForm />
+      {showApplicationForm && <ApplicationForm onCancel={() => setShowApplicationForm(false)} />}
     </div>
   );
 };

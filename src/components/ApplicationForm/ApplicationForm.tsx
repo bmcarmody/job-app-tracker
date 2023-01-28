@@ -8,7 +8,11 @@ import { Input } from '../../library/Input';
 import { Select } from '../../library/Select';
 import { SelectOption } from '../../library/Select/Select';
 
-export const ApplicationForm = () => {
+type Props = {
+  onCancel: () => void;
+};
+
+export const ApplicationForm = ({ onCancel }: Props) => {
   const employmentOptions: SelectOption[] = [
     { label: 'Full-Time', value: 'fullTime' },
     { label: 'Part-Time', value: 'partTime' },
@@ -34,7 +38,7 @@ export const ApplicationForm = () => {
 
   return (
     <form
-      className="grid grid-cols-2 gap-x-8 gap-y-4 bg-slate-100 p-4 rounded-md w-full text-slate-900"
+      className="grid grid-cols-2 gap-x-8 gap-y-4 bg-slate-100 p-4 rounded-md w-full text-slate-900 relative -left-2/4 top-2/4 translate-x-2/4 -translate-y-full"
       onSubmit={handleSubmit(onSubmit)}
     >
       <Input
@@ -87,7 +91,9 @@ export const ApplicationForm = () => {
         placeholder="www.awesomecompany.com"
       />
       <div></div>
-      <Button appearance="secondary">Cancel</Button>
+      <Button appearance="secondary" onClick={onCancel}>
+        Cancel
+      </Button>
       <Button appearance="primary" type="submit" additionalStyles="basis-full">
         Add Job Application
       </Button>
