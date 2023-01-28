@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { ApplicationForm } from '../../components/ApplicationForm';
 import { Column } from '../../components/Column';
 import { Button } from '../../library/Button';
+import { Overlay } from '../../library/Overlay';
 
 export const Dashboard = () => {
   const [showApplicationForm, setShowApplicationForm] = useState(false);
@@ -17,7 +18,12 @@ export const Dashboard = () => {
         <Column name="Rejected" />
         <Column name="No Response (after 30 days)" />
       </div>
-      {showApplicationForm && <ApplicationForm onCancel={() => setShowApplicationForm(false)} />}
+      {showApplicationForm && (
+        <>
+          <Overlay />
+          <ApplicationForm onCancel={() => setShowApplicationForm(false)} />
+        </>
+      )}
     </div>
   );
 };
