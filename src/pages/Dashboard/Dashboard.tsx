@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { ApplicationForm } from '../../components/ApplicationForm';
 import { Column } from '../../components/Column';
-import { Button } from '../../library/Button';
 import { Overlay } from '../../library/Overlay';
 
 export const Dashboard = () => {
@@ -9,9 +8,9 @@ export const Dashboard = () => {
 
   return (
     <div className="h-full">
-      <Button appearance="primary" additionalStyles="block ml-auto mb-4" onClick={() => setShowApplicationForm(true)}>
+      <button className="block ml-auto mb-4 btn btn-primary" onClick={() => setShowApplicationForm(true)}>
         Add Application
-      </Button>
+      </button>
       <div className="columns-4">
         <Column name="Applied" />
         <Column name="In Process" />
