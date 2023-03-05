@@ -9,10 +9,10 @@ import { Select } from '../../library/Select';
 import { SelectOption } from '../../library/Select/Select';
 
 type Props = {
-  onCancel: () => void;
+  modalLabel: string;
 };
 
-export const ApplicationForm = ({ onCancel }: Props) => {
+export const ApplicationForm = ({ modalLabel }: Props) => {
   const employmentOptions: SelectOption[] = [
     { label: 'Full-Time', value: 'fullTime' },
     { label: 'Part-Time', value: 'partTime' },
@@ -37,66 +37,65 @@ export const ApplicationForm = ({ onCancel }: Props) => {
   const onSubmit = (data: Record<string, string>) => console.log(data);
 
   return (
-    <form
-      className="grid grid-cols-2 gap-x-8 gap-y-4 bg-slate-100 p-4 rounded-md w-full text-slate-900 relative -left-2/4 top-2/4 translate-x-2/4 -translate-y-full"
-      onSubmit={handleSubmit(onSubmit)}
-    >
-      <Input
-        label="Title"
-        type="text"
-        defaultValue=""
-        {...register('title')}
-        containerStyles="col-span-2"
-        inputStyles="w-full"
-        placeholder="Software Engineer"
-      />
-      <Input
-        label="Company Name"
-        type="text"
-        defaultValue=""
-        {...register('companyName')}
-        containerStyles="col-span-1"
-        inputStyles="w-full"
-        placeholder="Awesome Company Inc."
-      />
-      <Input
-        label="Date Applied"
-        type="date"
-        defaultValue=""
-        {...register('dateApplied')}
-        containerStyles="col-span-1"
-        inputStyles="w-40 pr-2"
-        min={minDate}
-        max={maxDate}
-      />
-      <Input
-        label="Location"
-        type="text"
-        defaultValue=""
-        {...register('location')}
-        containerStyles="col-span-1"
-        inputStyles="w-full"
-        placeholder="Remote"
-      />
-      <Select label="Employment" options={employmentOptions} />
-      <Input
-        label="Job Post"
-        type="text"
-        defaultValue=""
-        precontent="https://"
-        {...register('jobPost')}
-        containerStyles="col-span-1"
-        inputStyles="w-10/12"
-        required={false}
-        placeholder="www.awesomecompany.com"
-      />
-      <div></div>
-      <Button appearance="secondary" onClick={onCancel}>
-        Cancel
-      </Button>
-      <Button appearance="primary" type="submit" additionalStyles="basis-full">
-        Add Job Application
-      </Button>
+    <form className="modal" onSubmit={handleSubmit(onSubmit)}>
+      <div className="modal-box grid grid-cols-2 gap-x-8 gap-y-4 bg-slate-100 w-11/12 max-w-5xl text-slate-900">
+        <label htmlFor={modalLabel} className="btn btn-sm btn-circle absolute right-2 top-2">
+          x
+        </label>
+        <Input
+          label="Title"
+          type="text"
+          defaultValue=""
+          {...register('title')}
+          containerStyles="col-span-2"
+          inputStyles="w-full"
+          placeholder="Software Engineer"
+        />
+        <Input
+          label="Company Name"
+          type="text"
+          defaultValue=""
+          {...register('companyName')}
+          containerStyles="col-span-1"
+          inputStyles="w-full"
+          placeholder="Awesome Company Inc."
+        />
+        <Input
+          label="Date Applied"
+          type="date"
+          defaultValue=""
+          {...register('dateApplied')}
+          containerStyles="col-span-1"
+          inputStyles="w-40 pr-2"
+          min={minDate}
+          max={maxDate}
+        />
+        <Input
+          label="Location"
+          type="text"
+          defaultValue=""
+          {...register('location')}
+          containerStyles="col-span-1"
+          inputStyles="w-full"
+          placeholder="Remote"
+        />
+        <Select label="Employment" options={employmentOptions} />
+        <Input
+          label="Job Post"
+          type="text"
+          defaultValue=""
+          precontent="https://"
+          {...register('jobPost')}
+          containerStyles="col-span-1"
+          inputStyles="w-10/12"
+          required={false}
+          placeholder="www.awesomecompany.com"
+        />
+        <div></div>
+        <Button appearance="primary" type="submit" additionalStyles="basis-full">
+          Add Job Application
+        </Button>
+      </div>
     </form>
   );
 };
