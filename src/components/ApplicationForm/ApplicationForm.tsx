@@ -84,7 +84,6 @@ export const ApplicationForm = ({ modalLabel }: Props) => {
           label="Job Post"
           type="text"
           defaultValue=""
-          precontent="https://"
           {...register('jobPost')}
           containerStyles="col-span-1"
           inputStyles="w-10/12"
