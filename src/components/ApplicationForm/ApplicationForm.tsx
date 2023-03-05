@@ -3,7 +3,6 @@ import { collection } from 'firebase/firestore';
 import { useForm } from 'react-hook-form';
 import { db } from '../../firebase';
 import { COLLECTION_NAME, JobApplicationSchema } from '../../jobs';
-import { Button } from '../../library/Button';
 import { Input } from '../../library/Input';
 import { Select } from '../../library/Select';
 import { SelectOption } from '../../library/Select/Select';
