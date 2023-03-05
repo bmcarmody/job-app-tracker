@@ -7,6 +7,7 @@ import { Button } from '../../library/Button';
 import { Input } from '../../library/Input';
 import { Select } from '../../library/Select';
 import { SelectOption } from '../../library/Select/Select';
+import { X } from 'react-feather';
 
 type Props = {
   modalLabel: string;
@@ -39,8 +40,8 @@ export const ApplicationForm = ({ modalLabel }: Props) => {
   return (
     <form className="modal" onSubmit={handleSubmit(onSubmit)}>
       <div className="modal-box grid grid-cols-2 gap-x-8 gap-y-4 bg-slate-100 w-11/12 max-w-5xl text-slate-900">
-        <label htmlFor={modalLabel} className="btn btn-sm btn-circle absolute right-2 top-2">
-          x
+        <label htmlFor={modalLabel} className="btn btn-sm btn-ghost btn-circle absolute right-2 top-2">
+          <X />
         </label>
         <Input
           label="Title"
@@ -92,9 +93,9 @@ export const ApplicationForm = ({ modalLabel }: Props) => {
           placeholder="www.awesomecompany.com"
         />
         <div></div>
-        <Button appearance="primary" type="submit" additionalStyles="basis-full">
+        <button className="btn btn-primary col-span-2" type="submit">
           Add Job Application
-        </Button>
+        </button>
       </div>
     </form>
   );
