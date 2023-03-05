@@ -1,43 +1,31 @@
-import { inputStyles as sharedInputStyles } from '../shared';
-import { ReactElement, InputHTMLAttributes, forwardRef, ForwardedRef, useMemo } from 'react';
+import { ReactElement, InputHTMLAttributes, forwardRef, ForwardedRef } from 'react';
 
 type Props = {
   label?: string;
   required?: boolean;
-  precontent?: string;
   containerStyles?: string;
   inputStyles?: string;
 } & InputHTMLAttributes<HTMLInputElement>;
 
 export const Input = forwardRef(
   (
-    { label, required, precontent, containerStyles, inputStyles, ...props }: Props,
+    { label, required, inputStyles, containerStyles, ...props }: Props,
     ref: ForwardedRef<HTMLInputElement>,
   ): ReactElement<HTMLLabelElement> => {
-    const getLabel = useMemo(
-      () => (
-        <div className="mb-2">
-          {label}
-          {required && '*'}
-        </div>
-      ),
-      [label, required],
-    );
-
     return (
-      <label className={containerStyles}>
-        {label && getLabel}
-        {precontent && (
-          <span className={`inline-block rounded-l-md w-2/12 text-center ${sharedInputStyles}`}>{precontent}</span>
-        )}
+      <div className={`form-control ${containerStyles}`}>
+        <label className="label">
+          <span className="label-text text-slate-600 text-sm">
+            {label}
+            {required && '*'}
+          </span>
+        </label>
         <input
-          className={`text-black ${
-            precontent ? 'rounded-r-md' : 'rounded-md'
-          } focus:outline-purple-400 ${sharedInputStyles} ${inputStyles}`}
+          className={`input input-bordered input-primary text-black border-slate-300 border-2 focus:outline-offset-0 bg-white ${inputStyles}`}
           {...props}
           ref={ref}
         />
-      </label>
+      </div>
     );
   },
 );
@@ -47,7 +35,6 @@ Input.displayName = 'Input';
 Input.defaultProps = {
   label: '',
   required: true,
-  precontent: '',
   containerStyles: '',
   inputStyles: '',
 };
