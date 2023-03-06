@@ -89,6 +89,7 @@ export const ApplicationForm = ({ modalLabel }: Props) => {
           inputStyles="w-10/12"
           required={false}
           placeholder="www.awesomecompany.com"
+          inputGroupLabel="https://"
         />
         <div></div>
         <button className="btn btn-primary col-span-2" type="submit">
