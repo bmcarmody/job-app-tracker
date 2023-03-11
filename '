@@ -5,14 +5,14 @@ const applicationFormModalLabel = 'applicationForm';
 
 export const Dashboard = () => {
   return (
-    <div className="h-full flex flex-col">
+    <div className="h-full">
       {/* eslint-disable-next-line */}
       <div className="flex justify-end">
         <label htmlFor={applicationFormModalLabel} className="btn btn-primary mb-4">
           Add Application
         </label>
       </div>
-      <div className="grid grid-flow-col gap-4 h-full">
+      <div className="columns-4">
         <Column name="👏 Applied" />
         <Column name="🧐 Interviewing" />
         <Column name="👻 Stale" />

@@ -66,7 +66,7 @@ export const ApplicationForm = ({ modalLabel }: Props) => {
           defaultValue=""
           {...register('dateApplied')}
           containerStyles="col-span-1"
-          inputStyles="w-40 pr-2"
+          inputStyles="w-44 pr-2"
           min={minDate}
           max={maxDate}
         />
@@ -81,7 +81,7 @@ export const ApplicationForm = ({ modalLabel }: Props) => {
         />
         <Select label="Employment" options={employmentOptions} />
         <Input
-          label="Job Post"
+          label="Job Listing"
           type="text"
           defaultValue=""
           {...register('jobPost')}
@@ -93,7 +93,7 @@ export const ApplicationForm = ({ modalLabel }: Props) => {
         />
         <div></div>
         <button className="btn btn-primary col-span-2" type="submit">
-          Add Job Application
+          Add Application
         </button>
       </div>
     </form>
