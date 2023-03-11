@@ -8,7 +8,7 @@ export const Dashboard = () => {
     <div className="h-full">
       {/* eslint-disable-next-line */}
       <div className="flex justify-end">
-        <label htmlFor={applicationFormModalLabel} className="btn btn-primary">
+        <label htmlFor={applicationFormModalLabel} className="btn btn-primary mb-4">
           Add Application
         </label>
       </div>
