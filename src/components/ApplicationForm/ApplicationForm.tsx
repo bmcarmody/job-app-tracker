@@ -38,9 +38,9 @@ export const ApplicationForm = ({ modalLabel }: Props) => {
 
   return (
     <form className="modal" onSubmit={handleSubmit(onSubmit)}>
-      <div className="modal-box grid grid-cols-2 gap-x-8 gap-y-4 bg-primary-content w-11/12 max-w-5xl text-neutral">
+      <div className="modal-box grid grid-cols-2 gap-x-8 gap-y-4 bg-base-100 border border-primary w-11/12 max-w-5xl text-slate-700">
         <label htmlFor={modalLabel} className="btn btn-sm btn-ghost btn-circle absolute right-2 top-2">
-          <X />
+          <X className="text-slate-300" />
         </label>
         <Input
           label="Title"

@@ -20,7 +20,7 @@ export const Input = forwardRef(
 
       return (
         <label className="input-group">
-          <span className="bg-white border-slate-300 border-2 -mr-1">{inputGroupLabel}</span>
+          <span className="bg-base-200 text-slate-300">{inputGroupLabel}</span>
           {input}
         </label>
       );
@@ -29,14 +29,14 @@ export const Input = forwardRef(
     return (
       <div className={`form-control ${containerStyles}`}>
         <label className="label">
-          <span className="label-text text-slate-600 text-sm">
+          <span className="label-text text-slate-300 text-base">
             {label}
             {required && '*'}
           </span>
         </label>
         {getInputType(
           <input
-            className={`input input-bordered input-primary text-black border-slate-300 border-2 focus:outline-offset-0 bg-white ${inputStyles}`}
+            className={`input input-bordered input-primary border-none text-slate-300 placeholder:text-slate-600 focus:outline-offset-0 bg-base-300 ${inputStyles}`}
             {...props}
             ref={ref}
           />,

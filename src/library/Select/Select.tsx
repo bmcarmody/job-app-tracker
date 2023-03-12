@@ -16,7 +16,7 @@ export const Select = forwardRef(
     return (
       <div>
         <label className="label">
-          <span className="label-text text-slate-600 text-sm">
+          <span className="label-text text-slate-300 text-base">
             {label}
             {required && '*'}
           </span>
@@ -24,7 +24,7 @@ export const Select = forwardRef(
         <select
           ref={ref}
           {...props}
-          className={`select select-bordered select-primary black border-slate-300 border-2 focus:outline-offset-0 bg-white`}
+          className={`select select-bordered select-primary focus:outline-offset-0 border-none text-slate-300 bg-base-300`}
         >
           {options.map(({ label: optionLabel, value }) => (
             <option key={value} value={value}>
