@@ -17,12 +17,22 @@ model JobApplication {
   updatedAt DateTime @updatedAt
   userId    String
 
+  status          Status   @relation(fields: [statusId], references: [id])
   position        String   @db.VarChar(30)
   companyName     String   @db.VarChar(30)
   jobPostUrl      String   @db.VarChar(500)
   confidenceLevel Int      @db.TinyInt()
   applyDate       DateTime
+  statusId        String
 
   @@index([id])
   @@index([userId])
+  @@index([statusId])
+}
+
+model Status {
+  id String @id @default(cuid())
+
+  name           String
+  JobApplication JobApplication[]
 }
