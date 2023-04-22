@@ -7,7 +7,9 @@
     "dev": "next dev",
     "postinstall": "prisma generate",
     "lint": "next lint",
-    "start": "next start"
+    "start": "next start",
+    "prisma-studio": "npx prisma studio",
+    "prisma-push-changes": "npx prisma db push"
   },
   "dependencies": {
     "@clerk/nextjs": "^4.16.2",
