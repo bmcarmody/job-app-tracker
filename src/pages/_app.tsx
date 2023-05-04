@@ -9,7 +9,7 @@ import Navbar from "./components/Navbar";
 const MyApp: AppType = ({ Component, pageProps }) => {
   return (
     <ClerkProvider>
-      <div className="m-auto max-w-7xl px-6 py-4">
+      <div className="m-auto flex h-screen max-w-7xl flex-col px-6 py-4">
         <Navbar />
         <Component {...pageProps} />
       </div>
