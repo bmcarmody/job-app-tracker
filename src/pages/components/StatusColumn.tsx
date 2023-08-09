@@ -9,7 +9,7 @@ interface Props {
 export const StatusColumn = ({ title, className }: Props): ReactElement<HTMLElement> => {
   return (
     <section className={className}>
-      <h2 className="font-display text-xl font-medium text-slate-100">{title}</h2>
+      <h2 className="font-display text-xl font-medium text-slate-100 mb-4">{title}</h2>
       <JobCard />
     </section>
   );
