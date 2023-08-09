@@ -1,13 +1,19 @@
 import { StatusColumn } from "../components/StatusColumn";
 
+const columns = [
+  'Researching',
+  'Applied',
+  'Interviewing',
+  'Offer',
+  'Rejected'
+]
+
 const DashboardPage = () => {
   return (
-    <div className="flex justify-between">
-      <StatusColumn title="Researching" />
-      <StatusColumn title="Applied" />
-      <StatusColumn title="Interviewing" />
-      <StatusColumn title="Offer" />
-      <StatusColumn title="Rejected / Withdrawn" />
+    <div className="flex">
+      {columns.map((columnName) => (
+        <StatusColumn title={columnName} className="flex-grow m-4" key={columnName} />
+      ))}
     </div>
   );
 };

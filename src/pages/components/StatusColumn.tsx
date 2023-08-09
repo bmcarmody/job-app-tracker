@@ -1,13 +1,16 @@
 import { type ReactElement } from "react";
+import { JobCard } from "./JobCard";
 
 interface Props {
   title: string;
+  className: string;
 }
 
-export const StatusColumn = ({ title }: Props): ReactElement<HTMLElement> => {
+export const StatusColumn = ({ title, className }: Props): ReactElement<HTMLElement> => {
   return (
-    <section>
+    <section className={className}>
       <h2 className="font-display text-xl font-medium text-slate-100">{title}</h2>
+      <JobCard />
     </section>
   );
 };
