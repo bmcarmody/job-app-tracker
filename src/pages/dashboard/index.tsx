@@ -11,9 +11,13 @@ const columns = [
 const DashboardPage = () => {
   return (
     <div className="flex">
-      {columns.map((columnName) => (
-        <StatusColumn title={columnName} className="flex-grow m-4" key={columnName} />
-      ))}
+      {columns.map((columnName, idx) => {
+        const useMargin = idx !== 0 && idx !== columns.length - 1;
+
+        return (
+          <StatusColumn title={columnName} className={`flex-grow ${useMargin ? 'mx-4' : ''}`} key={columnName} />
+        )
+      })}
     </div>
   );
 };
