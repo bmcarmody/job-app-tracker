@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "@clerk/nextjs": "^4.16.2",
+    "@dnd-kit/core": "^6.0.8",
     "@prisma/client": "^4.11.0",
     "@radix-ui/react-navigation-menu": "^1.1.2",
     "@radix-ui/react-tooltip": "^1.0.6",

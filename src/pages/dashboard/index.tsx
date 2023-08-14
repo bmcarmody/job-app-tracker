@@ -1,3 +1,4 @@
+import { DndContext } from "@dnd-kit/core";
 import { StatusColumn } from "../components/StatusColumn";
 
 const columns = [
@@ -11,21 +12,23 @@ const columns = [
 const DashboardPage = () => {
   return (
     <div className="flex">
-      {columns.map((columnName, idx) => {
-        let margin = 'mx-4';
+      <DndContext>
+        {columns.map((columnName, idx) => {
+          let margin = 'mx-4';
 
-        if (idx === 0) {
-          margin = 'mr-4';
-        }
+          if (idx === 0) {
+            margin = 'mr-4';
+          }
 
-        if (idx === columns.length - 1) {
-          margin = 'ml-4';
-        }
+          if (idx === columns.length - 1) {
+            margin = 'ml-4';
+          }
 
-        return (
-          <StatusColumn title={columnName} className={`flex-grow ${margin}`} key={columnName} />
-        )
-      })}
+          return (
+            <StatusColumn title={columnName} className={`flex-grow ${margin}`} key={columnName.toLowerCase()} />
+          )
+        })}
+      </DndContext>
     </div>
   );
 };
