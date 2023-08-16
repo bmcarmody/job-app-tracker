@@ -1,25 +1,46 @@
-import { useRef, type ReactElement } from "react";
+import { type ReactElement } from "react";
 import { RiArrowUpLine, RiBuilding4Line, RiExternalLinkFill, RiMoneyDollarCircleLine, RiTimeLine } from "react-icons/ri";
 import { Tooltip } from "./Tooltip";
 import { useDraggable } from "@dnd-kit/core";
 
-interface Props {
-  columnId: string;
+export interface Job {
+  id: string;
+  createdAt: Date;
+  updatedAt: Date;
+  userId: string;
+  status: string;
+  position: string;
+  company: string;
+  jobPostUrl: string;
+  confidenceLevel: number;
+  applyDate: Date;
+  statusId: string;
 }
 
-export const JobCard = ({ columnId }: Props): ReactElement<HTMLElement> => {
+interface Props {
+  data: Job;
+}
+
+const formatDate = (date: Date): string => {
+  const month = date.getMonth() + 1;
+  const day = date.getDate();
+  const year = date.getFullYear();
+
+  return `${month}/${day}/${year}`;
+};
+
+export const JobCard = ({ data }: Props): ReactElement<HTMLElement> => {
   const { attributes, listeners, setNodeRef, transform } = useDraggable({
-    id: `${columnId}-draggable`,
+    id: data.id,
   });
   const style = transform ? {
     transform: `translate3d(${transform.x}px, ${transform.y}px, 0)`,
   } : undefined;
-  const randomId = useRef(Math.random().toString(36).substring(7));
 
   return (
     <section className="bg-slate-800 rounded-lg p-3 outline outline-offset-2 outline-1 outline-slate-600 cursor-grab text-slate-100" ref={setNodeRef} style={style} {...listeners} {...attributes} >
-      <h3 className="font-display text-lg font-medium">Google</h3>
-      <p className="font-body text-xs flex items-center hover:text-rose-600 hover:cursor-pointer">Senior Frontend Engineer <RiExternalLinkFill className="ml-0.5 text-sm" /></p>
+      <h3 className="font-display text-lg font-medium">{data.company}</h3>
+      <p className="font-body text-xs flex items-center hover:text-rose-600 hover:cursor-pointer">{data.position}<RiExternalLinkFill className="ml-0.5 text-sm" /></p>
       <section className="font-body text-xs flex items-center mt-1 justify-between">
         <div className="flex items-center">
           <RiBuilding4Line className="text-l mr-0.5" />
@@ -38,12 +59,11 @@ export const JobCard = ({ columnId }: Props): ReactElement<HTMLElement> => {
         </div>
         <Tooltip
           triggerClassName="flex items-center ml-auto"
-          tooltipContent={<>Applied 01/01/2023</>}
+          tooltipContent={<>{formatDate(data.applyDate)}</>}
         >
           <RiTimeLine className="text-xl mr-0.5" /> 5 days ago
         </Tooltip>
       </footer>
-      {randomId.current}
     </section>
   );
 };
