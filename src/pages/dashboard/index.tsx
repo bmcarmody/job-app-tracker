@@ -74,12 +74,18 @@ const DashboardPage = () => {
   const handleDragEnd = (event: DragEndEvent): void => {
     const { active, over } = event;
 
-    if (!over || active.id === over.id) {
+    console.log(event);
+
+    if (!over) {
       return;
     }
 
     const sourceColumnId = (active.id as string).split('-')[0];
     const targetColumnId = over.id;
+
+    if (sourceColumnId === targetColumnId) {
+      return;
+    }
 
     const sourceColumn = columns.find(column => column.name.toLowerCase() === sourceColumnId);
     const targetColumn = columns.find(column => column.name.toLowerCase() === targetColumnId);
@@ -88,9 +94,9 @@ const DashboardPage = () => {
       return;
     }
 
-    const itemBeingMoved = sourceColumn.jobs.find(job => job.id === active.id);
+    const jobBeingMoved = sourceColumn.jobs.find(job => job.id === active.id);
 
-    if (!itemBeingMoved) {
+    if (!jobBeingMoved || !targetColumn) {
       return;
     }
 
@@ -102,10 +108,14 @@ const DashboardPage = () => {
       }
 
       if (column.name.toLowerCase() === targetColumnId) {
-        itemBeingMoved.status = targetColumn.name;
-        itemBeingMoved.id = `${targetColumn.name.toLowerCase()}-${itemBeingMoved.id.split('-')[1]}`;
+        const newJob = { ...jobBeingMoved };
+        // Id should always be present on jobBeingMoved - this is just to ensure type safety
+        const jobId = jobBeingMoved.id.split('-')[1] ?? 'default_id';
 
-        return { ...column, jobs: [...column.jobs, itemBeingMoved] };
+
+        newJob.status = targetColumn.name;
+        newJob.id = `${targetColumn.name.toLowerCase()}-${jobId}`;
+        return { ...column, jobs: [...column.jobs, newJob] };
       }
 
       return column;
