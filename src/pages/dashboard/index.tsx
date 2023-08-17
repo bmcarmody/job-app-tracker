@@ -139,7 +139,7 @@ const DashboardPage = () => {
           }
 
           return (
-            <StatusColumn data={column} className={`flex-grow ${margin}`} key={column.name.toLowerCase()} />
+            <StatusColumn data={column} className={`basis-5/12 ${margin}`} key={column.name.toLowerCase()} />
           )
         })}
       </DndContext>
