@@ -25,7 +25,7 @@ export const StatusColumn = ({ data, className }: Props): ReactElement<HTMLEleme
     <section className={className} ref={setNodeRef} >
       <h2 className="font-display text-xl font-medium text-slate-100 mb-4">{name}</h2>
       {jobs.map((job) => (
-        <JobCard key={job.id} data={job} />
+        <JobCard key={job.id} data={job} className="first:mt-0 mt-4" />
       ))}
     </section>
   );

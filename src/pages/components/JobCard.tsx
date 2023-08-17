@@ -19,6 +19,7 @@ export interface Job {
 
 interface Props {
   data: Job;
+  className?: string;
 }
 
 const formatDate = (date: Date): string => {
@@ -29,7 +30,7 @@ const formatDate = (date: Date): string => {
   return `${month}/${day}/${year}`;
 };
 
-export const JobCard = ({ data }: Props): ReactElement<HTMLElement> => {
+export const JobCard = ({ data, className }: Props): ReactElement<HTMLElement> => {
   const { attributes, listeners, setNodeRef, transform } = useDraggable({
     id: data.id,
   });
@@ -38,7 +39,7 @@ export const JobCard = ({ data }: Props): ReactElement<HTMLElement> => {
   } : undefined;
 
   return (
-    <section className="bg-slate-800 rounded-lg p-3 outline outline-offset-2 outline-1 outline-slate-600 cursor-grab text-slate-100" ref={setNodeRef} style={style} {...listeners} {...attributes} >
+    <section className={`bg-slate-800 rounded-lg p-3 outline outline-offset-2 outline-1 outline-slate-600 cursor-grab text-slate-100 active:pointer-events-none ${className ?? ''}`} ref={setNodeRef} style={style} {...listeners} {...attributes}>
       <h3 className="font-display text-lg font-medium">{data.company}</h3>
       <p className="font-body text-xs flex items-center hover:text-rose-600 hover:cursor-pointer">{data.position}<RiExternalLinkFill className="ml-0.5 text-sm" /></p>
       <section className="font-body text-xs flex items-center mt-1 justify-between">
@@ -66,4 +67,8 @@ export const JobCard = ({ data }: Props): ReactElement<HTMLElement> => {
       </footer>
     </section>
   );
+};
+
+JobCard.defaultProps = {
+  className: '',
 };

@@ -125,7 +125,7 @@ const DashboardPage = () => {
   };
 
   return (
-    <div className="flex">
+    <div className="flex h-full">
       <DndContext onDragEnd={handleDragEnd}>
         {columns.map((column, idx) => {
           let margin = 'mx-4';
