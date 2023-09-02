@@ -1,6 +1,6 @@
 import { type ReactElement } from "react";
 import { RiArrowUpLine, RiBuilding4Line, RiExternalLinkFill, RiMoneyDollarCircleLine, RiTimeLine } from "react-icons/ri";
-import { Tooltip } from "./Tooltip";
+import Tooltip from "./Tooltip";
 import { useDraggable } from "@dnd-kit/core";
 
 export interface Job {
@@ -30,7 +30,7 @@ const formatDate = (date: Date): string => {
   return `${month}/${day}/${year}`;
 };
 
-export const JobCard = ({ data, className }: Props): ReactElement<HTMLElement> => {
+const JobCard = ({ data, className }: Props): ReactElement<HTMLElement> => {
   const { attributes, listeners, setNodeRef, transform } = useDraggable({
     id: data.id,
   });
@@ -72,3 +72,5 @@ export const JobCard = ({ data, className }: Props): ReactElement<HTMLElement> =
 JobCard.defaultProps = {
   className: '',
 };
+
+export default JobCard;

@@ -1,5 +1,5 @@
 import { type ReactElement } from "react";
-import { JobCard } from "./JobCard";
+import JobCard from "./JobCard";
 import { useDroppable } from "@dnd-kit/core";
 import { type Job } from './JobCard';
 
@@ -14,7 +14,7 @@ interface Props {
 
 }
 
-export const StatusColumn = ({ data, className }: Props): ReactElement<HTMLElement> => {
+const StatusColumn = ({ data, className }: Props): ReactElement<HTMLElement> => {
   const { name, jobs } = data;
 
   const { setNodeRef } = useDroppable({
@@ -30,3 +30,5 @@ export const StatusColumn = ({ data, className }: Props): ReactElement<HTMLEleme
     </section>
   );
 };
+
+export default StatusColumn;

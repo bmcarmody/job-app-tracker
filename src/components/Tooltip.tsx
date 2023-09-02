@@ -7,7 +7,7 @@ interface Props {
   tooltipContent: ReactNode;
 }
 
-export const Tooltip = ({ triggerClassName, children, tooltipContent }: Props): ReactElement => {
+const Tooltip = ({ triggerClassName, children, tooltipContent }: Props): ReactElement => {
   return (
     <ReactTooltip.Provider delayDuration={0}>
       <ReactTooltip.Root>
@@ -25,3 +25,5 @@ export const Tooltip = ({ triggerClassName, children, tooltipContent }: Props): 
 Tooltip.defaultProps = {
   triggerClassName: "",
 };
+
+export default Tooltip;
