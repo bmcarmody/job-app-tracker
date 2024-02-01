@@ -1,3 +1,5 @@
+"use client";
+
 import { useAuth, useUser } from "@clerk/nextjs";
 import * as NavigationMenu from "@radix-ui/react-navigation-menu";
 import Link from "next/link";

@@ -1,69 +1,71 @@
+"use client";
+
 import { DndContext, type DragEndEvent } from "@dnd-kit/core";
 import { StatusColumn } from "../components/StatusColumn";
 import { useState } from "react";
-import { type ColumnData } from '../components/StatusColumn';
+import { type ColumnData } from "../components/StatusColumn";
 
 const initialColumnData: ColumnData[] = [
   {
-    name: 'Researching',
+    name: "Researching",
     jobs: [
       {
-        id: 'researching-1',
+        id: "researching-1",
         createdAt: new Date(),
         updatedAt: new Date(),
-        userId: '1',
-        status: 'Researching',
-        position: 'Software Engineer',
-        company: 'Google',
-        jobPostUrl: 'https://www.google.com',
+        userId: "1",
+        status: "Researching",
+        position: "Software Engineer",
+        company: "Google",
+        jobPostUrl: "https://www.google.com",
         confidenceLevel: 0,
         applyDate: new Date(),
-        statusId: '1',
-      }
+        statusId: "1",
+      },
     ],
   },
   {
-    name: 'Applied',
+    name: "Applied",
     jobs: [
       {
-        id: 'applied-2',
+        id: "applied-2",
         createdAt: new Date(),
         updatedAt: new Date(),
-        userId: '1',
-        status: 'Applied',
-        position: 'Software Engineer',
-        company: 'Apple',
-        jobPostUrl: 'https://www.apple.com',
+        userId: "1",
+        status: "Applied",
+        position: "Software Engineer",
+        company: "Apple",
+        jobPostUrl: "https://www.apple.com",
         confidenceLevel: 0,
         applyDate: new Date(),
-        statusId: '2',
-      }
+        statusId: "2",
+      },
     ],
   },
   {
-    name: 'Interviewing',
+    name: "Interviewing",
     jobs: [
       {
-        id: 'interviewing-3',
+        id: "interviewing-3",
         createdAt: new Date(),
         updatedAt: new Date(),
-        userId: '1',
-        status: 'Interviewing',
-        position: 'Software Engineer',
-        company: 'Amazon',
-        jobPostUrl: 'https://www.amazon.com',
+        userId: "1",
+        status: "Interviewing",
+        position: "Software Engineer",
+        company: "Amazon",
+        jobPostUrl: "https://www.amazon.com",
         confidenceLevel: 0,
         applyDate: new Date(),
-        statusId: '3',
-      }
+        statusId: "3",
+      },
     ],
   },
   {
-    name: 'Offer',
+    name: "Offer",
     jobs: [],
   },
   {
-    name: 'Rejected',
+    name: "Rejected",
     jobs: [],
   },
 ];
@@ -80,21 +82,25 @@ const DashboardPage = () => {
       return;
     }
 
-    const sourceColumnId = (active.id as string).split('-')[0];
+    const sourceColumnId = (active.id as string).split("-")[0];
     const targetColumnId = over.id;
 
     if (sourceColumnId === targetColumnId) {
       return;
     }
 
-    const sourceColumn = columns.find(column => column.name.toLowerCase() === sourceColumnId);
-    const targetColumn = columns.find(column => column.name.toLowerCase() === targetColumnId);
+    const sourceColumn = columns.find(
+      (column) => column.name.toLowerCase() === sourceColumnId
+    );
+    const targetColumn = columns.find(
+      (column) => column.name.toLowerCase() === targetColumnId
+    );
 
     if (!sourceColumn || !targetColumn) {
       return;
     }
 
-    const jobBeingMoved = sourceColumn.jobs.find(job => job.id === active.id);
+    const jobBeingMoved = sourceColumn.jobs.find((job) => job.id === active.id);
 
     if (!jobBeingMoved || !targetColumn) {
       return;
@@ -102,16 +108,18 @@ const DashboardPage = () => {
 
     // Create new columns state by first removing the job from the source column
     // and then adding it to the target column.
-    const newColumns = columns.map(column => {
+    const newColumns = columns.map((column) => {
       if (column.name.toLowerCase() === sourceColumnId) {
-        return { ...column, jobs: column.jobs.filter(job => job.id !== active.id) };
+        return {
+          ...column,
+          jobs: column.jobs.filter((job) => job.id !== active.id),
+        };
       }
 
       if (column.name.toLowerCase() === targetColumnId) {
         const newJob = { ...jobBeingMoved };
         // Id should always be present on jobBeingMoved - this is just to ensure type safety
-        const jobId = jobBeingMoved.id.split('-')[1] ?? 'default_id';
-
+        const jobId = jobBeingMoved.id.split("-")[1] ?? "default_id";
 
         newJob.status = targetColumn.name;
         newJob.id = `${targetColumn.name.toLowerCase()}-${jobId}`;
@@ -128,19 +136,23 @@ const DashboardPage = () => {
     <div className="flex h-full">
       <DndContext onDragEnd={handleDragEnd}>
         {columns.map((column, idx) => {
-          let margin = 'mx-4';
+          let margin = "mx-4";
 
           if (idx === 0) {
-            margin = 'mr-4';
+            margin = "mr-4";
           }
 
           if (idx === columns.length - 1) {
-            margin = 'ml-4';
+            margin = "ml-4";
           }
 
           return (
-            <StatusColumn data={column} className={`basis-5/12 ${margin}`} key={column.name.toLowerCase()} />
-          )
+            <StatusColumn
+              data={column}
+              className={`basis-5/12 ${margin}`}
+              key={column.name.toLowerCase()}
+            />
+          );
         })}
       </DndContext>
     </div>
