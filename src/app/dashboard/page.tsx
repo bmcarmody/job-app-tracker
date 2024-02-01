@@ -1,9 +1,9 @@
 "use client";
 
 import { DndContext, type DragEndEvent } from "@dnd-kit/core";
-import { StatusColumn } from "../components/StatusColumn";
+import StatusColumn from "~/components/StatusColumn";
 import { useState } from "react";
-import { type ColumnData } from "../components/StatusColumn";
+import { type ColumnData } from "~/components/StatusColumn";
 
 const initialColumnData: ColumnData[] = [
   {
