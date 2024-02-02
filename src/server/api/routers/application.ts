@@ -1,7 +1,7 @@
 import { createTRPCRouter, publicProcedure } from "~/server/api/trpc";
 
-export const jobApplicationRouter = createTRPCRouter({
+export const applicationRouter = createTRPCRouter({
   getAll: publicProcedure.query(({ ctx }) => {
-    return ctx.prisma.status.findMany();
+    return ctx.db.select().from("application");
   }),
 });
