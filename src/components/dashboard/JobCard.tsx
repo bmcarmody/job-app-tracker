@@ -1,6 +1,6 @@
 import { type ReactElement } from "react";
 import { RiArrowUpLine, RiBuilding4Line, RiExternalLinkFill, RiMoneyDollarCircleLine, RiTimeLine } from "react-icons/ri";
-import Tooltip from "./Tooltip";
+import Tooltip from "~/components/Tooltip";
 import { useDraggable } from "@dnd-kit/core";
 
 export interface Job {
