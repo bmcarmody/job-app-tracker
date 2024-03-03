@@ -1,9 +1,8 @@
-"use client";
-
 import { DndContext, type DragEndEvent } from "@dnd-kit/core";
 import StatusColumn from "~/components/StatusColumn";
 import { useState } from "react";
 import { type ColumnData } from "~/components/StatusColumn";
+import { api } from "~/trpc/server";
 
 const initialColumnData: ColumnData[] = [
   {
@@ -72,6 +71,9 @@ const initialColumnData: ColumnData[] = [
 
 const DashboardPage = () => {
   const [columns, setColumns] = useState<ColumnData[]>(initialColumnData);
+  const test = api.application.getAll.query();
+
+  console.log(test);
 
   const handleDragEnd = (event: DragEndEvent): void => {
     const { active, over } = event;

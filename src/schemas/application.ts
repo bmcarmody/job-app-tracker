@@ -7,7 +7,7 @@ import {
 } from "drizzle-orm/mysql-core";
 import { createId } from "@paralleldrive/cuid2";
 
-export const Application = mysqlTable(
+export const application = mysqlTable(
   "application",
   {
     id: varchar("id", { length: 128 })
