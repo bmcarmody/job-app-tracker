@@ -25,7 +25,6 @@ export const application = mysqlTable(
     applyDate: timestamp("apply_date").notNull(),
   },
   (Application) => ({
-    idIdx: index("id_idx").on(Application.id),
     userIdIdx: index("user_id_idx").on(Application.userId),
     statusIdIdx: index("status_id_idx").on(Application.statusId),
   })
