@@ -1,7 +1,6 @@
 import { type ReactElement } from "react";
 import { RiArrowUpLine, RiBuilding4Line, RiExternalLinkFill, RiMoneyDollarCircleLine, RiTimeLine } from "react-icons/ri";
 import Tooltip from "~/components/Tooltip";
-import { useDraggable } from "@dnd-kit/core";
 
 export interface Job {
   id: string;
@@ -31,15 +30,8 @@ const formatDate = (date: Date): string => {
 };
 
 const JobCard = ({ data, className }: Props): ReactElement<HTMLElement> => {
-  const { attributes, listeners, setNodeRef, transform } = useDraggable({
-    id: data.id,
-  });
-  const style = transform ? {
-    transform: `translate3d(${transform.x}px, ${transform.y}px, 0)`,
-  } : undefined;
-
   return (
-    <section className={`bg-slate-800 rounded-lg p-3 outline outline-offset-2 outline-1 outline-slate-600 cursor-grab text-slate-100 active:pointer-events-none ${className ?? ''}`} ref={setNodeRef} style={style} {...listeners} {...attributes}>
+    <section draggable className="cursor-grab rounded border border-neutral-700 bg-neutral-800 p-3 active:cursor-grabbing text-slate-300">
       <h3 className="font-display text-lg font-medium">{data.company}</h3>
       <p className="font-body text-xs flex items-center hover:text-rose-600 hover:cursor-pointer">{data.position}<RiExternalLinkFill className="ml-0.5 text-sm" /></p>
       <section className="font-body text-xs flex items-center mt-1 justify-between">
