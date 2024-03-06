@@ -7,7 +7,7 @@ const DashboardPage = () => {
   console.log(test);
 
   return (
-    <div className="flex h-full">
+    <div className="flex h-full w-full gap-3 overflow-scroll p-12">
       <Dashboard />
     </div>
   );

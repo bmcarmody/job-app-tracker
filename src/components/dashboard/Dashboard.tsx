@@ -130,27 +130,16 @@ const Dashboard = () => {
     setColumns(newColumns);
   };
   return (
-    <DndContext onDragEnd={handleDragEnd}>
-      {columns.map((column, idx) => {
-        let margin = "mx-4";
-
-        if (idx === 0) {
-          margin = "mr-4";
-        }
-
-        if (idx === columns.length - 1) {
-          margin = "ml-4";
-        }
-
+    <>
+      {columns.map((column) => {
         return (
           <StatusColumn
             data={column}
-            className={`basis-5/12 ${margin}`}
             key={column.name.toLowerCase()}
           />
         );
       })}
-    </DndContext>
+    </>
   )
 }
 
