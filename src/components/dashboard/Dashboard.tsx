@@ -3,6 +3,7 @@
 import Column from "~/components/dashboard/Column";
 import { useState } from "react";
 import { type ColumnData } from "~/components/dashboard/Column";
+import { DeleteArea } from "./DeleteArea";
 
 const initialColumnData: ColumnData[] = [
   {
@@ -134,6 +135,7 @@ const Dashboard = () => {
           />
         );
       })}
+      <DeleteArea />
     </>
   )
 }
