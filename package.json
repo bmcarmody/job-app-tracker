@@ -8,9 +8,9 @@
     "lint": "next lint",
     "start": "next start",
     "type-check": "tsc --noEmit",
-    "migration:create": "drizzle-kit generate:mysql",
-    "migration:push": "drizzle-kit push:mysql",
-    "migration:drop": "drizzle-kit drop:mysql",
+    "migration:create": "drizzle-kit generate:pg",
+    "migration:push": "drizzle-kit push:pg",
+    "migration:drop": "drizzle-kit drop:pg",
     "studio": "drizzle-kit studio"
   },
   "dependencies": {
@@ -25,8 +25,8 @@
     "@trpc/react-query": "^10.18.0",
     "@trpc/server": "^10.18.0",
     "drizzle-orm": "^0.29.3",
-    "mysql2": "^3.9.1",
     "next": "^13.2.4",
+    "pg": "^8.11.3",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-icons": "^4.10.1",

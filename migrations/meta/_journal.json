@@ -1,19 +1,12 @@
 {
   "version": "5",
-  "dialect": "mysql",
+  "dialect": "pg",
   "entries": [
     {
       "idx": 0,
       "version": "5",
-      "when": 1706854706297,
-      "tag": "0000_tearful_steel_serpent",
-      "breakpoints": true
-    },
-    {
-      "idx": 1,
-      "version": "5",
-      "when": 1709489779956,
-      "tag": "0001_demonic_devos",
+      "when": 1709957781488,
+      "tag": "0000_uneven_skreet",
       "breakpoints": true
     }
   ]
