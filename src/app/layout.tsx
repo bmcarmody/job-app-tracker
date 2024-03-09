@@ -1,4 +1,3 @@
-import { ClerkProvider } from "@clerk/nextjs";
 import Navbar from "~/components/Navbar";
 import "~/styles/globals.css";
 import { TRPCReactProvider } from "~/trpc/react";
@@ -13,12 +12,10 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
     <html lang="en">
       <body>
         <TRPCReactProvider>
-          <ClerkProvider>
-            <div className="m-auto flex h-screen max-w-7xl flex-col px-6 py-4">
-              <Navbar />
-              {children}
-            </div>
-          </ClerkProvider>
+          <div className="m-auto flex h-screen max-w-7xl flex-col px-6 py-4">
+            <Navbar />
+            {children}
+          </div>
         </TRPCReactProvider>
       </body>
     </html>
