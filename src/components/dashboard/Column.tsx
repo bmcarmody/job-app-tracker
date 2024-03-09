@@ -22,7 +22,7 @@ const Column = ({ data }: Props): ReactElement<HTMLElement> => {
       {applications.map((application) => (
         <Card key={application.id} data={application} className="first:mt-0 mt-4" />
       ))}
-      <div className="h-full w-full transition-colors bg-neutral-800/50" />
+      {/* <div className="h-full w-full transition-colors bg-neutral-800/50" /> */}
     </section>
   );
 };
