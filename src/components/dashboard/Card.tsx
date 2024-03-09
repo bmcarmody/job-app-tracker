@@ -2,22 +2,8 @@ import { type ReactElement } from "react";
 import { RiArrowUpLine, RiBuilding4Line, RiExternalLinkFill, RiMoneyDollarCircleLine, RiTimeLine } from "react-icons/ri";
 import Tooltip from "~/components/Tooltip";
 
-export interface Job {
-  id: string;
-  createdAt: Date;
-  updatedAt: Date;
-  userId: string;
-  status: string;
-  position: string;
-  company: string;
-  jobPostUrl: string;
-  confidenceLevel: number;
-  applyDate: Date;
-  statusId: string;
-}
-
 interface Props {
-  data: Job;
+  data: any;
   className?: string;
 }
 
@@ -29,7 +15,8 @@ const formatDate = (date: Date): string => {
   return `${month}/${day}/${year}`;
 };
 
-const JobCard = ({ data, className }: Props): ReactElement<HTMLElement> => {
+const Card = ({ data }: Props): ReactElement<HTMLElement> => {
+
   return (
     <section draggable className="cursor-grab rounded border border-neutral-700 bg-neutral-800 p-3 active:cursor-grabbing text-slate-300">
       <h3 className="font-display text-lg font-medium">{data.company}</h3>
@@ -61,8 +48,4 @@ const JobCard = ({ data, className }: Props): ReactElement<HTMLElement> => {
   );
 };
 
-JobCard.defaultProps = {
-  className: '',
-};
-
-export default JobCard;
+export default Card;
