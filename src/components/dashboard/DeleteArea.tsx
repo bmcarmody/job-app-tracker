@@ -1,3 +1,5 @@
+"use client";
+
 import { useState } from "react";
 import { RiDeleteBinFill } from "react-icons/ri";
 

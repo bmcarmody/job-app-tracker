@@ -3,16 +3,16 @@ import Card from "./Card";
 import { DropIndicator } from "./DropIndicator";
 
 export interface ColumnData {
-  name: string;
   applications: any;
 }
 
 interface Props {
+  name: string;
   data: ColumnData;
 }
 
-const Column = ({ data }: Props): ReactElement<HTMLElement> => {
-  const { name, applications } = data;
+const Column = ({ name, data }: Props): ReactElement<HTMLElement> => {
+  const { applications } = data;
 
   return (
     <section className="w-56 shrink-0">
