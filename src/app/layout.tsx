@@ -10,7 +10,7 @@ export const metadata = {
 const RootLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <html lang="en">
-      <body>
+      <body data-theme="dracula">
         <TRPCReactProvider>
           <div className="m-auto flex h-screen max-w-7xl flex-col px-6 py-4">
             <Navbar />
