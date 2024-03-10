@@ -100,8 +100,6 @@ const testData = [
 const Dashboard = async () => {
   const columns = await api.column.getAll.query();
 
-  console.log('columns', columns)
-
   return (
     <>
       {columns.map((column) => {
