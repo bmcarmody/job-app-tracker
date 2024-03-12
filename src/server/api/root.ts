@@ -1,6 +1,6 @@
-import { createTRPCRouter } from "~/server/api/trpc";
-import { applicationRouter } from "~/server/api/routers/application";
-import { columnRouter } from "./routers/column";
+import { createTRPCRouter } from '~/server/api/trpc';
+import { applicationRouter } from '~/server/api/routers/application';
+import { columnRouter } from './routers/column';
 
 /**
  * This is the primary router for your server.

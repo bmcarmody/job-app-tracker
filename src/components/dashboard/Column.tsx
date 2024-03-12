@@ -1,6 +1,6 @@
-import { type ReactElement } from "react";
-import Card from "./Card";
-import { DropIndicator } from "./DropIndicator";
+import { type ReactElement } from 'react';
+import Card from './Card';
+import { DropIndicator } from './DropIndicator';
 
 export interface ColumnData {
   applications: any;
@@ -21,7 +21,11 @@ const Column = ({ name, data }: Props): ReactElement<HTMLElement> => {
         <span className="text-sm text-neutral-400">{applications.length}</span>
       </div>
       {applications.map((application) => (
-        <Card key={application.id} data={application} className="first:mt-0 mt-4" />
+        <Card
+          key={application.id}
+          data={application}
+          className="mt-4 first:mt-0"
+        />
       ))}
       <DropIndicator beforeId="-1" />
       {/* <div className="h-full w-full transition-colors bg-neutral-800/50" /> */}
