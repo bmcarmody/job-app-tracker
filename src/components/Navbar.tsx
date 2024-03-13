@@ -1,6 +1,6 @@
-import { PlusIcon } from '@heroicons/react/24/solid';
 import Link from 'next/link';
 import { isAuthed, logout } from '~/app/(auth)/login/actions';
+import { AddJobModal } from './dashboard/AddJobModal';
 
 const Navbar = async () => {
   const isLoggedIn = await isAuthed();
@@ -10,10 +10,7 @@ const Navbar = async () => {
       <div className="link-hover link text-2xl">Job Flow</div>
       {isLoggedIn ? (
         <div>
-          <button className="btn btn-primary mr-4">
-            <PlusIcon className="h-4 w-4" />
-            New Job
-          </button>
+          <AddJobModal />
           <form>
             <button
               className="btn btn-outline btn-secondary"

@@ -58,6 +58,5 @@ export const isAuthed = async (): Promise<boolean> => {
 
   const { data } = await supabase.auth.getSession();
 
-  console.log(data.session);
   return Boolean(data.session);
 };

@@ -7,7 +7,7 @@ export default function LoginPage() {
       <form className="flex w-1/2 flex-col gap-4 rounded-xl bg-base-300 p-8">
         <h2 className="text-2xl">Login or Sign up</h2>
         <label className="input input-bordered flex items-center gap-2">
-          <EnvelopeIcon />
+          <EnvelopeIcon className="h-4 w-4" />
           <input
             name="email"
             type="email"
@@ -16,7 +16,7 @@ export default function LoginPage() {
           />
         </label>
         <label className="input input-bordered flex items-center gap-2">
-          <LockClosedIcon />
+          <LockClosedIcon className="h-4 w-4" />
           <input
             name="password"
             type="password"
