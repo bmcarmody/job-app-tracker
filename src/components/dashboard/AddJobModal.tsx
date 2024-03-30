@@ -3,6 +3,7 @@
 import {
   BriefcaseIcon,
   BuildingOffice2Icon,
+  CurrencyDollarIcon,
   DocumentIcon,
   MapPinIcon,
   PlusIcon,
@@ -32,6 +33,11 @@ const formFields: FormField[] = [
   {
     label: 'Apply Date',
     type: 'date',
+  },
+  {
+    label: 'Salary',
+    optional: true,
+    icon: <CurrencyDollarIcon className="h-4 w-4" />,
   },
   {
     label: 'Job Listing URL',
