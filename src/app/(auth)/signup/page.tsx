@@ -1,11 +1,11 @@
-import { login } from './actions';
+import { signup } from './actions';
 import { EnvelopeIcon, LockClosedIcon } from '@heroicons/react/24/solid';
 
-export default function LoginPage() {
+export default function SignupPage() {
   return (
     <div className="mb-12 flex h-full w-full items-center justify-center">
       <form className="flex w-96 flex-col rounded-xl bg-base-300 p-8">
-        <h2 className="mb-6 text-2xl font-bold">Login</h2>
+        <h2 className="mb-6 text-2xl font-bold">Register</h2>
         <div>
           <div className="label">
             <span className="label-text">Email</span>
@@ -29,19 +29,19 @@ export default function LoginPage() {
           </div>
         </div>
         <button
-          className="btn btn-primary mt-6 w-full"
+          className="btn btn-secondary mt-6 w-full"
           // eslint-disable-next-line @typescript-eslint/no-misused-promises
-          formAction={login}
+          formAction={signup}
         >
-          Log in
+          Sign up
         </button>
         <div className="mt-4 text-center">
-          Don&apos;t have an account?{' '}
+          Already have an account?{' '}
           <a
-            href="/signup"
+            href="/login"
             className="underline-offset-3 underline hover:text-secondary"
           >
-            Sign up
+            Login
           </a>
         </div>
       </form>
