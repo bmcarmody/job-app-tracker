@@ -1,17 +1,19 @@
 'use client';
 
 import {
+  BanknotesIcon,
   BriefcaseIcon,
   BuildingOffice2Icon,
-  CurrencyDollarIcon,
-  DocumentIcon,
+  LinkIcon,
   MapPinIcon,
   PlusIcon,
+  XMarkIcon,
 } from '@heroicons/react/24/solid';
 import { type ReactElement, useRef } from 'react';
 
 type FormField = {
   label: string;
+  placeholder?: string;
   icon?: ReactElement;
   optional?: boolean;
   type?: 'text' | 'date';
@@ -20,14 +22,17 @@ type FormField = {
 const formFields: FormField[] = [
   {
     label: 'Company',
+    placeholder: 'Google',
     icon: <BuildingOffice2Icon className="h-4 w-4" />,
   },
   {
     label: 'Position',
+    placeholder: 'Software Engineer',
     icon: <BriefcaseIcon className="h-4 w-4" />,
   },
   {
     label: 'Location',
+    placeholder: 'Mountain View, CA',
     icon: <MapPinIcon className="h-4 w-4" />,
   },
   {
@@ -36,13 +41,15 @@ const formFields: FormField[] = [
   },
   {
     label: 'Salary',
+    placeholder: '100k - 120k',
     optional: true,
-    icon: <CurrencyDollarIcon className="h-4 w-4" />,
+    icon: <BanknotesIcon className="h-4 w-4" />,
   },
   {
     label: 'Job Listing URL',
+    placeholder: 'https://google.com/jobs/1234',
     optional: true,
-    icon: <DocumentIcon className="h-4 w-4" />,
+    icon: <LinkIcon className="h-4 w-4" />,
   },
 ];
 
@@ -69,36 +76,47 @@ export const AddJobModal = (): ReactElement => {
       </button>
       <dialog className="modal" ref={addJobModalRef}>
         <div className="modal-box">
-          <h2 className="text-2xl font-bold">Add Job</h2>
-          <div className="pt-6">
+          <h2 className="text-3xl font-bold">Add Job</h2>
+          <p className="text-md mt-1 text-slate-400">
+            Enter information to track your job application
+          </p>
+          <form method="dialog">
+            <button className="btn btn-circle btn-ghost btn-sm absolute right-5 top-5">
+              <XMarkIcon className="size-6" />
+            </button>
+          </form>
+          <div className="mt-6">
             {formFields.map((field, idx) => (
-              <label
-                className={`input input-bordered flex items-center gap-2 ${
-                  idx !== 0 ? 'mt-4' : ''
-                }`}
-                key={field.label}
-              >
-                {field?.icon}
-                <input
-                  type={field?.type || 'text'}
-                  className="grow"
-                  placeholder={field.label}
-                  defaultValue={
-                    field?.type === 'date' ? getTodayInDateFormat() : ''
-                  }
-                />
-                {field.optional && (
-                  <span className="badge badge-info badge-outline">
-                    Optional
-                  </span>
-                )}
-              </label>
+              <>
+                <div
+                  className={`label
+                    ${idx !== 0 ? 'mt-2' : ''}`}
+                >
+                  <span className="label-text">{field.label}</span>
+                </div>
+                <div
+                  className="input input-bordered flex items-center gap-2"
+                  key={field.label}
+                >
+                  {field?.icon}
+                  <input
+                    type={field?.type || 'text'}
+                    className="grow"
+                    placeholder={field.placeholder}
+                    defaultValue={
+                      field?.type === 'date' ? getTodayInDateFormat() : ''
+                    }
+                  />
+                  {field.optional && (
+                    <span className="badge badge-neutral">Optional</span>
+                  )}
+                </div>
+              </>
             ))}
           </div>
           <div className="modal-action">
-            <form method="dialog">
-              <button className="btn btn-outline btn-secondary">Cancel</button>
-              <button className="btn btn-primary ml-4">Add Job</button>
+            <form method="dialog" className="w-full">
+              <button className="btn btn-primary w-full">Add Job</button>
             </form>
           </div>
         </div>
