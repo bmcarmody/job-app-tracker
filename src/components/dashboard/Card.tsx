@@ -22,7 +22,7 @@ const Card = ({ data }: Props): ReactElement<HTMLElement> => {
         <div className="gap-1 p-3">
           <div className="mb-2">
             <h3 className="text-lg font-semibold">{data.company}</h3>
-            <p className="flex items-center text-xs text-slate-500 hover:cursor-pointer hover:text-rose-600">
+            <p className="w-fit text-xs text-slate-500 hover:cursor-pointer hover:text-accent">
               {data.position}
             </p>
           </div>
