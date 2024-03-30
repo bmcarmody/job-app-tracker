@@ -16,6 +16,7 @@ export default function LoginPage() {
               type="text"
               className="grow"
               placeholder="John.doe@example.com"
+              name="email"
             />
           </div>
         </div>
@@ -25,7 +26,12 @@ export default function LoginPage() {
           </div>
           <div className="input input-bordered flex items-center gap-2">
             <LockClosedIcon className="size-4" />
-            <input type="password" className="grow" placeholder="Password" />
+            <input
+              type="password"
+              className="grow"
+              placeholder="Password"
+              name="password"
+            />
           </div>
         </div>
         <button
