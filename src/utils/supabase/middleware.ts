@@ -59,7 +59,11 @@ export async function updateSession(request: NextRequest) {
     }
   );
 
-  await supabase.auth.getUser();
+  const user = await supabase.auth.getUser();
+
+  if (!user || !user?.data?.user) {
+    return NextResponse.redirect(new URL('/', request.url));
+  }
 
   return response;
 }

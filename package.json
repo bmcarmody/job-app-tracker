@@ -8,8 +8,9 @@
     "lint": "next lint",
     "start": "next start",
     "type-check": "tsc --noEmit",
-    "migration:create": "drizzle-kit generate:pg",
-    "migration:push": "drizzle-kit push:pg",
+    "migration:create": "drizzle-kit generate",
+    "migration:up": "drizzle-kit up",
+    "migration:push": "drizzle-kit push",
     "migration:drop": "drizzle-kit drop:pg",
     "studio": "drizzle-kit studio",
     "prepare": "husky"
